@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# Litechat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Litechat is a lightweight chat frontend built with React, TypeScript, and Vite.  
+**No data or API keys are stored locally—everything stays in memory, making it safe and privacy-friendly.**
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Minimal, clean, and responsive UI
+- Supports multiple AI chat providers (OpenAI, DeepSeek, etc.)
+- No chat history or API key is saved to local storage, cookies, or any server
+- Light/Dark theme toggle
+- Markdown message rendering
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone this repository and install dependencies:
 
-- Configure the top-level `parserOptions` property like this:
+   ```sh
+   git clone https://github.com/yourname/litechat.git
+   cd litechat
+   npm install
+   ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+2. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+3. Open your browser at `http://localhost:5173`, enter your API key, and start chatting.
+
+## Security & Privacy
+
+- Litechat does **not** store your API key or chat content anywhere—everything is kept in memory only.
+- All data is cleared when you refresh or close the page.
+
+## Build
+
+```sh
+npm run build
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Dependencies
+
+- React
+- TypeScript
+- Vite
+- @fluentui/react-components
+- react-markdown
+
+## License
+
+MIT
