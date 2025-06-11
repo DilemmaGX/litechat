@@ -177,7 +177,7 @@ const App: React.FC<{ theme: 'light' | 'dark'; onThemeSwitch: () => void }> = ({
         <Switch
           checked={theme === 'dark'}
           onChange={onThemeSwitch}
-          label={theme === 'dark' ? '深色' : '浅色'}
+          label={theme === 'dark' ? 'Dark' : 'Light'}
           style={{ marginLeft: 8, whiteSpace: 'nowrap' }}
         />
       </div>
