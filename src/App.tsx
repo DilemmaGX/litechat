@@ -47,8 +47,8 @@ const useStyles = makeStyles({
     alignSelf: 'flex-start',
   },
   user: {
-    background: '#80D8C3',
-    color: '#fff',
+    background: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
     alignSelf: 'flex-end',
   },
   ai: {
