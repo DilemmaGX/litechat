@@ -194,7 +194,8 @@ const App: React.FC<{ theme: 'light' | 'dark'; onThemeSwitch: () => void }> = ({
       </div>
       <div className={styles.inputRow}>
         <Textarea
-          placeholder="输入你的问题..."
+          placeholder="Start chat by typing here..."
+          autoFocus
           value={input}
           onChange={(_, d) => setInput(d.value)}
           style={{ flex: 1 }}
