@@ -1,34 +1,43 @@
-name: Build and Deploy
+name: Deploy static content to Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ['main']
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  build-deploy:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      - name: 🛎️ Checkout repository
+      - name: 🛎️ Checkout
         uses: actions/checkout@v4
-
-      - name: 🛠️ Setup Node.js
+      - name: 🟢 Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-
+          node-version: lts/*
+          cache: 'npm'
       - name: 📦 Install dependencies
         run: npm ci
-
-      - name: 🏗️ Build Vite site
+      - name: 🏗️ Build
         run: npm run build
-
-      - name: 🚢 Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: ⚙️ Setup Pages
+        uses: actions/configure-pages@v5
+      - name: 📤 Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: './dist'
+      - name: 🚚 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
